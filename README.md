@@ -16,3 +16,11 @@ The build/run/stop commands are in the Makefile
 
     make runk
     make stopk
+
+## Deploying to Kubernetes with Helm
+
+```
+helm repo add praqma https://praqma-helm-repo.s3.amazonaws.com/
+helm repo update
+helm install -n ngingo praqma/ngingo
+```
