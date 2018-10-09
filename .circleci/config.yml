@@ -1,6 +1,6 @@
 version: 2
 jobs:     
-  helmsman-deploy:
+  deploy:
     docker:
     - image: praqma/helmsman:v1.6.2-helm-v2.10.0
     steps:
@@ -15,7 +15,7 @@ workflows:
   version: 2
   helmsman-deploy:
     jobs:
-    - deploy-to-dev:
+    - deploy:
         filters:
           branches: 
             only: 
