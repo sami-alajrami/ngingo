@@ -1,7 +1,3 @@
----
-maintainer: meekrosoft
----
-
 # ngingo - a tiny web server that makes a point
 
 Single page web designs are all the rage...

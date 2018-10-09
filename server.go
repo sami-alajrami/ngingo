@@ -1,16 +1,19 @@
 package main
 
 import (
+	"context"
+	"log"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
-	"context"
-	"log"
 )
 
+var version = "1.0"
+
 func ping(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("pong"))
+	log.Println("Received a ping ...")
+	w.Write([]byte("pong from ngingo version: " + version))
 }
 func main() {
 	http.Handle("/", http.FileServer(http.Dir("./site")))

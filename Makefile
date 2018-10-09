@@ -1,4 +1,4 @@
-NAME   := praqma/ngingo
+NAME   := samincl/ngingo
 TAG    := $$(git log -1 --pretty=%h)
 IMG    := ${NAME}:${TAG}
 LATEST := ${NAME}:latest
