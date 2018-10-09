@@ -1,0 +1,25 @@
+version: 2
+jobs:     
+  helmsman-deploy:
+    docker:
+    - image: praqma/helmsman:v1.6.2-helm-v2.10.0
+    steps:
+      - checkout
+      
+      - run:
+          name: deploy all
+          command: |
+            helmsman --debug --apply -f .circleci/helmsman-utilities.toml -f .circleci/helmsman-ngingo.toml           
+
+workflows:
+  version: 2
+  helmsman-deploy:
+    jobs:
+    - deploy-to-dev:
+        filters:
+          branches: 
+            only: 
+            - master
+
+
+             

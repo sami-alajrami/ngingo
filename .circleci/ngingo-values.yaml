@@ -1,0 +1,21 @@
+# Default values for ngingo.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: samincl/ngingo
+  pullPolicy: IfNotPresent
+
+deployments:
+    - version: "v1"
+      weight: 75
+      shadow: false
+    - version: "v2"
+      weight: 25
+      shadow: false
+
+service:
+  type: ClusterIP
+  port: 80
