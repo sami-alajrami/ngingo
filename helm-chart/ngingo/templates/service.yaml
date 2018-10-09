@@ -1,0 +1,39 @@
+{{- range .Values.deployments }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "ngingo.fullname" $ }}--{{ .version }}
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v0
+      kind:  Mapping
+      name:  {{ include "ngingo.fullname" $ }}_{{ .version }}_mapping
+      host:  example.com
+      prefix: /
+      service: {{ include "ngingo.fullname" $ }}--{{ .version }}.{{ $.Release.Namespace }}
+      {{- if .weight  }}
+      weight: {{ .weight }}
+      {{- else if .shadow }}
+      shadow: true 
+      {{- end }}
+      
+      
+      
+  labels:
+    app: {{ include "ngingo.name" $ }}--{{ .version }}
+    chart: {{ include "ngingo.chart" $ }}
+    release: {{ $.Release.Name }}
+    heritage: {{ $.Release.Service }}
+spec:
+  type: {{ $.Values.service.type }}
+  ports:
+    - port: {{ $.Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ include "ngingo.name" $ }}--{{ .version }}
+    release: {{ $.Release.Name }}
+---
+{{- end }}
