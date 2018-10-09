@@ -10,11 +10,11 @@ image:
 
 deployments:
     - version: "v1"
-      weight: 75
+      # weight: 75
       shadow: false
     - version: "v2"
-      weight: 25
-      shadow: false
+      # weight: 25
+      shadow: true
 
 service:
   type: ClusterIP
