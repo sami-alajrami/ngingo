@@ -9,7 +9,7 @@ jobs:
       - run:
           name: deploy all
           command: |
-            helmsman --debug --apply -f .circleci/helmsman-utilities.toml -f .circleci/helmsman-ngingo.toml           
+            helmsman --debug --apply -f .circleci/helmsman-utilities.toml -f .circleci/helmsman-app.toml           
 
 workflows:
   version: 2

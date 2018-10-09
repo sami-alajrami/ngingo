@@ -1,0 +1,22 @@
+# define your environments and their k8s namespaces
+[namespaces]
+  [namespaces.demo]
+
+
+# define any private/public helm charts repos you would like to get charts from
+[helmRepos]
+  praqma = "https://praqma-helm-repo.s3.amazonaws.com/"
+
+
+# define the desired state of your applications helm charts
+# each contains the following:
+[apps]
+
+  [apps.ngingo]
+    namespace = "demo" 
+    enabled = true
+    chart = "praqma/ngingo"
+    version = "0.1.0"
+    # valuesFile = "ngingo-values.yaml"
+  
+# See https://github.com/Praqma/helmsman/blob/master/docs/desired_state_specification.md#apps for more apps options
