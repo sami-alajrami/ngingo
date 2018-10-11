@@ -17,6 +17,6 @@
     enabled = true
     chart = "praqma/ngingo"
     version = "0.1.0"
-    # valuesFile = "ngingo-values.yaml"
+    valuesFile = "ngingo-values.yaml"
   
 # See https://github.com/Praqma/helmsman/blob/master/docs/desired_state_specification.md#apps for more apps options
