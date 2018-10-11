@@ -47,13 +47,13 @@
     priority = -6
     protected = true
 
-    [apps.cert-manager]
-    description = "Grafan demo instance"
+    [apps.promethues]
+    description = "Promethues demo instance"
     namespace = "kube-system" 
     enabled = true
-    chart = "stable/cert-manager"
-    version = "v0.5.0"
-    priority = -5
+    chart = "stable/prometheus"
+    version = "7.1.4"
+    priority = -6
     protected = true
   
 # See https://github.com/Praqma/helmsman/blob/master/docs/desired_state_specification.md#apps for more apps options
