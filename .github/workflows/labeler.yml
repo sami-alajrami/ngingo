@@ -1,8 +1,8 @@
 name: label
 
 on:
-  pull_request_target:
-    types: [ opened, edited, reopened]
+  pull_request:
+    types: [opened, edited, reopened]
 
 jobs:
 
