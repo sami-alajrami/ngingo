@@ -26,7 +26,6 @@ jobs:
       uses: actions/checkout@v2 
 
     - name: helm lint
-      if: ${{ steps.check-changes.outputs.changed }}
       run: helm lint charts/ngingo
 
 

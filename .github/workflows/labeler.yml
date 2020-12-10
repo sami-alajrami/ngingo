@@ -11,10 +11,36 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
 
-    - name: Check out code into the Go module directory
+    - name: Check out code
       uses: actions/checkout@v2
 
     - uses: actions/labeler@main
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         configuration-path: .github/labeler-config.yml   
+
+  notify:
+    name: notify
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: kceb/pull-request-url-action@v1
+      id: get-url
+      with:
+        github-oauth-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - uses: 8398a7/action-slack@v3
+      with:
+        status: custom
+        fields: workflow,job,commit,repo,ref,author,took
+        custom_payload: |
+          {
+            username: 'action-slack',
+            icon_emoji: ':octocat:',
+            attachments: [{
+              color: 'good',
+              text: 'PR ${steps.get-url.outputs.url} has been created by ${process.env.AS_AUTHOR} on repo:  ${process.env.AS_REPO}@${process.env.AS_REF}',
+            }]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}    
