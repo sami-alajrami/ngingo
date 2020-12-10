@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
     paths:
-      - 'charts/*'
+      - 'charts/**'
   pull_request:
     branches: [ master ]
     paths:
