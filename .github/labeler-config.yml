@@ -5,7 +5,7 @@ frontend:
   - ./site/*
 
 source:
-  - ./**/*.go
+  - server.go
 
 build:
   - any: ['Dockerfile.*', 'Makefile']
