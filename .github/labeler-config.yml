@@ -1,17 +1,17 @@
 helm:
-  - ./charts/*
+  - 'charts/**'
   
 frontend:
-  - ./site/*
+  - 'site/**'
 
 source:
-  - ./server.go
+  - '**.go'
 
 build:
   - any: ['Dockerfile.*', 'Makefile']
 
 CI:
-  - ./.github/*
+  - '.github/**'
 
 docs:
-  - ./**/*.md
+  - '**.md'
