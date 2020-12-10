@@ -1,0 +1,17 @@
+helm:
+  - ./charts/*
+  
+frontend:
+  - ./site/*
+
+source:
+  - ./*.go
+
+build:
+  - any: ['Dockerfile.*', 'Makefile']
+
+CI:
+  - ./.github/*
+
+docs:
+  - ./*.md
