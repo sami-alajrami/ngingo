@@ -8,7 +8,7 @@ on:
   pull_request:
     branches: [ master ]
     paths:
-      - 'charts/*'
+      - 'charts/**'
 
 jobs:
 
@@ -24,8 +24,6 @@ jobs:
 
     - name: Check out code
       uses: actions/checkout@v2 
-      with:
-        fetch-depth: 0  
 
     - name: helm lint
       if: ${{ steps.check-changes.outputs.changed }}
