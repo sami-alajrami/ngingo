@@ -13,7 +13,7 @@ var version = "1.0"
 
 func ping(w http.ResponseWriter, r *http.Request) {
 	log.Println("Received a ping ...")
-	w.Write([]byte("pong from ngingo version: " + version))
+	w.Write([]byte("pong from Ngingo version: " + version))
 }
 func main() {
 	http.Handle("/", http.FileServer(http.Dir("./site")))
