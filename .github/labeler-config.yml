@@ -5,7 +5,7 @@ frontend:
   - ./site/*
 
 source:
-  - ./*.go
+  - ./**/*.go
 
 build:
   - any: ['Dockerfile.*', 'Makefile']
@@ -14,4 +14,4 @@ CI:
   - ./.github/*
 
 docs:
-  - ./*.md
+  - ./**/*.md
