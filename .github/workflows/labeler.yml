@@ -39,7 +39,7 @@ jobs:
             icon_emoji: ':octocat:',
             attachments: [{
               color: 'good',
-              text: 'PR ${steps.get-url.outputs.url} has been created by ${process.env.AS_AUTHOR} on repo:  ${process.env.AS_REPO}@${process.env.AS_REF}',
+              text: `PR ${steps.get-url.outputs.url} has been created by ${process.env.AS_AUTHOR} on repo:  ${process.env.AS_REPO}@${process.env.AS_REF}`,
             }]
           }
       env:
