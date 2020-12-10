@@ -13,7 +13,10 @@ var version = "1.0"
 
 func ping(w http.ResponseWriter, r *http.Request) {
 	log.Println("Received a ping ...")
-	w.Write([]byte("pong from ngingo version: " + version))
+	_, err := w.Write([]byte("pong from ngingo version: " + version))
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
 func main() {
 	http.Handle("/", http.FileServer(http.Dir("./site")))
@@ -30,5 +33,8 @@ func main() {
 
 	log.Println("Shutdown signal received, exiting...")
 
-	server.Shutdown(context.Background())
+	err := server.Shutdown(context.Background())
+	if err != nil {
+		log.Fatal(err)
+	}
 }
