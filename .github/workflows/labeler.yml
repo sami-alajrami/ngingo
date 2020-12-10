@@ -21,6 +21,7 @@ jobs:
 
   notify:
     name: notify
+    needs: triage
     runs-on: ubuntu-latest
     steps:
 
@@ -44,4 +45,4 @@ jobs:
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} 
-        URL: ${steps.get-url.outputs.url}   
+        URL: ${{ steps.get-url.outputs.url }}   
