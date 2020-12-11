@@ -3,7 +3,7 @@ name: build
 on:
   push:
     tags:        
-      - v* 
+      - 'v*' 
 
 jobs:
   dockerBuild:
@@ -26,6 +26,10 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASS }}
 
+    - name: Get tag
+      id: tag
+      uses: dawidd6/action-get-tag@v1
+
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
@@ -33,4 +37,4 @@ jobs:
         file: ./Dockerfile.prod
         platforms: linux/amd64,linux/arm64,linux/386
         push: true
-        tags: samincl/ngingo:latest  
+        tags: samincl/ngingo:${{steps.tag.outputs.tag}}  
