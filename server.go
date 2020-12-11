@@ -22,6 +22,7 @@ func main() {
 	http.Handle("/", http.FileServer(http.Dir("./site")))
 	http.HandleFunc("/ping", ping)
 
+	// comment
 	server := http.Server{Addr: ":80"}
 	go func() {
 		log.Fatal(server.ListenAndServe())
